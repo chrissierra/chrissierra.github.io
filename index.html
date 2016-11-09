@@ -1,25 +1,28 @@
-"Service Workers" 
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+<meta charset="UTF-8">
+<title>Custom Offline Page</title>
+</head>
 <body>
-  <p>Registration status: <strong
-id="status"></strong></p>
+<p>Registration status: <strong id="status"></strong></p>
 <script>
+var scope = {
+scope: './'
+};
 if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register(
-'service-worker.js',
-{ scope: './' }
-).then( function(serviceWorker) {
+navigator.serviceWorker.register('service-worker.js',
+scope)
+.then(
+function(serviceWorker) {
 document.getElementById('status').innerHTML =
 'successful';
 }).catch(function(error) {
-document.getElementById('status').
-innerHTML = error;
+document.getElementById('status').innerHTML =
+error;
 });
 } else {
-document.getElementById('status').
-innerHTML =
+document.getElementById('status').innerHTML =
 'unavailable';
 }
 </script>
