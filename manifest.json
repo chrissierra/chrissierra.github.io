@@ -1,0 +1,11 @@
+{
+"lang": "en",
+  "dir": "ltr",
+  "name": "Chris Sierra",
+  "description": "Probando manifiesto json",
+  "short_name": "Prueba Json manifest",
+"display": "fullscreen",
+  "orientation": "landscape",
+  "theme_color": "aliceblue",
+  "background_color": "red"
+  }
