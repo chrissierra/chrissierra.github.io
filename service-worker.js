@@ -39,3 +39,12 @@ var request,
 cacheBustingUrl;
 request = new Request(url,
 {cache: 'reload'}
+);
+if ('cache' in request) {
+return request;
+}
+cacheBustingUrl = new URL(url, self.location.href);
+cacheBustingUrl.search += (cacheBustingUrl.search ? '&' :
+'') + 'cachebust=' + Date.now();
+return new Request(cacheBustingUrl);
+}
