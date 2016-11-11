@@ -1,30 +1,30 @@
+var version = 1;
+var cacheName = 'stale- ' + version;
+self.addEventListener('install', function(event) {
+self.skipWaiting();
+});
+self.addEventListener('activate', function(event) {
+if (self.clients && clients.claim) {
+clients.claim();
+}
+});
 self.addEventListener('fetch', function(event) {
-console.log('Handling fetch event for',
-event.request.url);
-var requestUrl = new URL(event.request.url);
-if (requestUrl.pathname === '/urlshortener/v1/url' &&
-event.request.headers.has('X-Mock-Response')) {
-var response = {
-body: {
-kind: 'urlshortener#url',
-id: 'http://goo.gl/IKyjuU',
-longUrl: 'https://slightlyoff.github.io/
-ServiceWorker/spec/service_worker/index.html'
-},
-init: {
-status: 200,
-statusText: 'OK',
-headers: {
-'Content-Type': 'application/json',
-'X-Mock-Response': 'yes'
+event.respondWith(
+fetch(event.request).then(function(response) {
+caches.open(cacheName).then(function(cache) {
+if(response.status >= 500) {
+cache.match(event.request).
+then(function(response) {
+return response;
+}).catch(function() {
+return response;
+  });
+} else {
+cache.put(event.request,
+response.clone());
+return response;
 }
-}
-};
-var mockResponse = new
-Response(JSON.stringify(response.body),
-response.init);
-console.log('Responding with a mock response body:',
-response.body);
-event.respondWith(mockResponse);
-}
+});
+})
+);
 });
