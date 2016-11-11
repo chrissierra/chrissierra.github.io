@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Stale on Error</title>
+<title>Custom Offline Page</title>
 </head>
 <body>
 <p>Registration status: <strong id="status"></strong></p>
 <script>
+var scope = {
+scope: './'
+};
 if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register(
-'service-worker.js',
-{ scope: './' }
-).then( function(serviceWorker) {
-  document.getElementById('status').innerHTML =
+navigator.serviceWorker.register('service-worker.js',
+scope)
+.then(
+function(serviceWorker) {
+document.getElementById('status').innerHTML =
 'successful';
 }).catch(function(error) {
 document.getElementById('status').innerHTML =
