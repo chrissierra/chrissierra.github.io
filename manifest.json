@@ -7,5 +7,6 @@
 "display": "fullscreen",
   "orientation": "landscape",
   "theme_color": "aliceblue",
+  "start_url":"/?utm_source=homescreen",
   "background_color": "red"
   }
