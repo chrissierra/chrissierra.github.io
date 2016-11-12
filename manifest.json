@@ -12,7 +12,7 @@
   }
 ],
 "display": "standalone",
-  "orientation": "landscape",
+  "orientation": "fullscreen",
   "theme_color": "blue",
   "start_url":"/?utm_source=homescreen",
   "background_color": "red"
