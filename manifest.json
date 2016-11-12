@@ -6,7 +6,7 @@
   "short_name": "Prueba Json manifest",
 "display": "fullscreen",
   "orientation": "landscape",
-  "theme_color": "aliceblue",
+  "theme_color": "blue",
   "start_url":"/?utm_source=homescreen",
   "background_color": "red"
   }
