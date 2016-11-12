@@ -6,7 +6,7 @@
   "short_name": "Prueba Json manifest",
   "icons": [
   {
-    "src":"ic_favorite_black_24dp_2x",
+    "src":"ic_swap_vertical_circle_48pt_3x.png",
     "sizes": "48x48",
     "type": "image/png"
   }
