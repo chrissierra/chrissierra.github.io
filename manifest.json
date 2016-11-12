@@ -4,6 +4,13 @@
   "name": "Chris Sierra",
   "description": "Probando manifiesto json",
   "short_name": "Prueba Json manifest",
+  "icons": [
+  {
+    "src":"ic_favorite_black_24dp_2x",
+    "sizes": "48x48",
+    "type": "image/png"
+  }
+]
 "display": "fullscreen",
   "orientation": "landscape",
   "theme_color": "blue",
