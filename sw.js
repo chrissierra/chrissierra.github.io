@@ -2,7 +2,7 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v6').then(function(cache) {
       return cache.addAll([
-        "index.html,
+        "index.html",
         "indexedDB.js",
         "db.html",
         "peo.html"
