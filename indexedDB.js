@@ -5,6 +5,8 @@ pornombres_boton= document.getElementById("pornombres");
 
 pornombres_boton.addEventListener("click", mostrartodosdatos_pornombre, false)
 porfechas_boton= document.getElementById("porfechas");
+mostrartodosclientes= document.getElementById("mostrartodosclientes");
+mostrartodosclientes.addEventListener("click", mostrartodosdatos_porTODOS, false);
 porfechas_boton.addEventListener("click", mostrartodosdatos_porfecha, false);
 agregar_boton= document.getElementById("agregar");
 agregar_boton.addEventListener("click", agregarobjeto, false);
@@ -14,15 +16,16 @@ email= document.getElementById("email").value;
 numero= document.getElementById("numero").value;
 comentario= document.getElementById("comentario").value;
 
-var request = indexedDB.open("clientes2");
+var request = indexedDB.open("clientes3");
 
 request.onupgradeneeded = function() {
   // The database did not previously exist, so create object stores and indexes.
   var db = request.result;
-  var store = db.createObjectStore("corredora", {keyPath: "nombre"});
+  var store = db.createObjectStore("corredora", {keyPath: "numero", unique: true});
   var fechaIndex = store.createIndex("by_fecha", "fecha");
   var nombreIndex = store.createIndex("by_nombre", "nombre");
-  var unico_todos= store.createIndex("by_todos", "hidden")
+  var unico_todos= store.createIndex("by_todos", "hidden");
+  var numero = store.createIndex("by_numero", "nombre");
 
   // Populate with initial data.
 
@@ -44,7 +47,7 @@ email= document.getElementById("email").value;
 numero= document.getElementById("numero").value;
 comentario= document.getElementById("comentario").value;
 
-alert(email);
+//alert(email);
 var tx = db.transaction("corredora", "readwrite");
 var store = tx.objectStore("corredora");
 
@@ -71,21 +74,22 @@ request.onsuccess = function() {
   var cursor = request.result;
   if (cursor) {
     // Called for each matching record.
-    alert(cursor.value.nombre, cursor.value.fecha, cursor.value.email);
+    //alert(cursor.value.nombre, cursor.value.fecha, cursor.value.email);
     zonadatos.innerHTML+="<div>"+cursor.value.nombre+ "-"+cursor.value.fecha+"</div>"
     cursor.continue();
   } else {
     // No more matching records.
-    alert(null);
+    //alert(null);
     
   }
 };
 }
 
 function mostrartodosdatos_porfecha(){
+
 fecha= document.getElementById("fecha").value;
 var zonadatos= document.getElementById("zonadatos")
-
+zonadatos.innerHTML= "";
 var tx = db.transaction("corredora", "readonly");
 var store = tx.objectStore("corredora");
 var index = store.index("by_fecha");
@@ -95,12 +99,16 @@ request.onsuccess = function() {
   var cursor = request.result;
   if (cursor) {
     // Called for each matching record.
-    alert(cursor.value.isbn, cursor.value.title, cursor.value.author);
-    zonadatos.innerHTML+="<div>"+cursor.value.nombre+ "-"+cursor.value.email+"</div>"
+   // alert(cursor.value.isbn, cursor.value.title, cursor.value.author);
+    zonadatos.innerHTML+="<tr><td>"+"<a href='index_edita.html?edita="+cursor.value.numero+"'>"+cursor.value.nombre+ "</a></td><td>"+cursor.value.email+"</td><td>"+cursor.value.comentario+"</td><td>"+cursor.value.fecha+ "</td><td>"+cursor.value.numero+"</td><td>"  +"</td></tr>"
     cursor.continue();
   } else {
     // No more matching records.
-    alert(null);
+    nombre= document.getElementById("nombre").value=""
+fecha= document.getElementById("fecha").value=""
+email= document.getElementById("email").value=""
+numero= document.getElementById("numero").value=""
+comentario= document.getElementById("comentario").value=""
     
   }
 };
@@ -117,11 +125,6 @@ var index = store.index("by_todos");
 var request = index.openCursor(IDBKeyRange.only("todos"));
 request.onsuccess = function() {
   var cursor = request.result;
-
-
-  
-
-
   if (cursor) {
     // Called for each matching record.
    // alert(cursor.value.isbn, cursor.value.title, cursor.value.author);
@@ -144,6 +147,13 @@ comentario= document.getElementById("comentario").value=""
 
 
 window.addEventListener("load", iniciar, false);
+
+
+
+
+
+
+
 
 
 
