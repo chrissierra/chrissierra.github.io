@@ -10,7 +10,7 @@
     }
   ],
   "start_url": "/?utm_source=homescreen",
-  "background_color": "blue",
-  "Theme_color": "blue",
+  "background_color": "white",
+  "Theme_color": "white",
   "display": "standalone"
 }
