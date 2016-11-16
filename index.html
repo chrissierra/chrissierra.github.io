@@ -3,14 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta charset="iso-8859-1">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Corredora SierraPropiedades</title>
 <link rel="manifest" href="/manifest.json">
-	
-	<script src="jquery-1.3.2.min.js"></script>
+<script src="jquery-1.3.2.min.js"></script>
    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="indexedDB.js"></script>
+  <script src="jquery.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
 	<script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
@@ -24,19 +25,82 @@ if ('serviceWorker' in navigator) {
 }
 
 	</script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
-	
-<body>
-	 <input type="button" id="btnExport" value=" Export Table data into Excel " />
+	 
  
     <script>
+    $(document).ready(function(){
     $("#btnExport").click(function(e) {
         window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#simple').html()));
+
         
-        e.preventDefault();
     });
+    })
     </script>
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Logotipo</a>
+  </div>
+ 
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Enlace #1</a></li>
+      <li><a href="#">Enlace #2</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Menú #1 <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Acción #1</a></li>
+          <li><a href="#">Acción #2</a></li>
+          <li><a href="#">Acción #3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #4</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #5</a></li>
+        </ul>
+      </li>
+    </ul>
+ 
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Buscar">
+      </div>
+      <button type="submit" class="btn btn-default">Enviar</button>
+    </form>
+ 
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Enlace #3</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Menú #2 <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Acción #1</a></li>
+          <li><a href="#">Acción #2</a></li>
+          <li><a href="#">Acción #3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #4</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+    <div class="container">
 	<form>
   <div class="form-group">
     <label for="exampleInputEmail1">Nombre</label>
@@ -61,14 +125,22 @@ if ('serviceWorker' in navigator) {
   
   <div class="checkbox">
     <label>
-      <input type="checkbox" id="porfechas"> Busca por Fechas <br>
-      <input type="checkbox" id="pornombres"> Busca por Nombres
-    </label>
+      <button type="button" class="btn btn-success" id="porfechas" value="Búsqueda por Fechas"> Búsqueda por Fechas </button>
+        
+      <button type="button" class="btn btn-success" id="pornombres" value="Búsqueda por Nombres" > Búsqueda por Nombres</button>
+      <button type="button" class="btn btn-success" id="mostrartodosclientes" value="Búsqueda por Fechas"> Mostrar Todos </button>
+
+
+    
   </div>
-  <button type="button" class="btn btn-default" id="agregar">Agrega</button>
+  
 </form>
 
-
+</div>
+<hr align="center" width="100%">
+<div style="text-align:center">
+     <button type="button" class="btn btn-danger" id="agregar" style="right:10px;" >Agrega</button>
+     </div>
 <div id="simple">
 
 
@@ -89,6 +161,9 @@ if ('serviceWorker' in navigator) {
             </table>
              
 
+</div>
+<div style="text-align:center">
+<button type="button" id="btnExport" class="btn btn-info" value=" Export Table data into Excel " />Exportar a Excel</button>
 </div>
 </body>
 </html>
