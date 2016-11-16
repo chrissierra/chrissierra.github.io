@@ -2,6 +2,7 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v6').then(function(cache) {
       return cache.addAll([
+        "jquery-1.3.2.min.js",
         "index.html",
         "indexedDB.js",
         "db.html",
