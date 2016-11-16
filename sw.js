@@ -5,7 +5,6 @@ this.addEventListener('install', function(event) {
         "jquery-1.3.2.min.js",
         "index.html",
         "indexedDB.js",
-        "db.html",
         "peo.html"
         
         
@@ -44,4 +43,4 @@ this.addEventListener('activate', function(event) {
     })
   );
 });
-new Response('Hello from your friendly neighbourhood service worker!');
+
