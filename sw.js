@@ -1,4 +1,4 @@
-var cacheaguardar= "v7"
+var cacheaguardar= "v8";
 this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(cacheaguardar).then(function(cache) {
