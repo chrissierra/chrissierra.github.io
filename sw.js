@@ -1,6 +1,7 @@
+var cacheaguardar= "v7"
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v6').then(function(cache) {
+    caches.open(cacheaguardar).then(function(cache) {
       return cache.addAll([
         "jquery-1.3.2.min.js",
         "index.html",
@@ -19,7 +20,7 @@ this.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(resp) {
       return resp || fetch(event.request).then(function(response) {
-        caches.open('v6').then(function(cache) {
+        caches.open(cacheaguardar).then(function(cache) {
           cache.put(event.request, response.clone());
         });
         return response;
@@ -31,7 +32,7 @@ this.addEventListener('fetch', function(event) {
 });
 
 this.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v6'];
+  var cacheWhitelist = [cacheaguardar];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
