@@ -1,6 +1,6 @@
 var CACHE_NAME = 'gih-cache1';
 var CACHED_URLS = [
-  'indexoffline.html',
+  'peo.html',
      "jquery-1.3.2.min.js",
         "index.html",
         "indexedDB.js",
