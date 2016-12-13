@@ -6,7 +6,7 @@ this.addEventListener('install', function(event) {
         "jquery-1.3.2.min.js",
         "index.html",
         "https://www.youtube.com/watch?v=zuM0-hdfJeE",
-        "youtube.html,
+        "youtube.html",
         "indexedDB.js",
         "peo.html"
         
