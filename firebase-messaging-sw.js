@@ -12,3 +12,14 @@ importScripts('https://www.gstatic.com/firebasejs/4.4.0/firebase.js');
     messagingSenderId: "880783848352"
   };
   firebase.initializeApp(config);
+
+
+  const messaging=firebase.messaging();
+  messaging.setBackgroundMessageHandler(function(payload){
+    const title="hello"
+    const options={
+      body:payload.data.status
+    };
+    return self.registration.showNotification(title, option);
+  })
+
